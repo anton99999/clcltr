@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><head>
+    <meta charset="UTF-8">
+    <script src="js/jquery.min.js"></script>
+    <title>Document</title>
+    
+    <style>
+        html,body{font-family:sans-serif;padding:0;margin:0;height: 100%;color: #fff;}
+    
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:#333;
+        }
+        .res{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 310px;
+            height: 250px;
+            padding-bottom: 20px;
+        }
+
+        .knop{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .b{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            background: #222;
+            border-radius: 20px;
+        }
+
+        .b p{ font-size: 28px; }
+        .q{   font-size: 46px; }
+        .a{   font-size: 36px; opacity: 0.4;}
+
+        p{ margin: 0; user-select:none;}
+
+        #bd, #bm, #bs, #ba{ background: #005090; }
+        #bc{ background: #B41E1E; }
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="res">
+        <p class="q"></p>
+        <p class="a"></p>
+    </div>
+    <div class="knop">
+        <div class="b" id="b7" onclick="c('7')"><p>7</p></div>
+        <div class="b" id="b8" onclick="c('8')"><p>8</p></div>
+        <div class="b" id="b9" onclick="c('9')"><p>9</p></div>
+        <div class="b" id="bd" onclick="o('/')"><p>:</p></div>
+        <div class="b" id="b4" onclick="c('4')"><p>4</p></div>
+        <div class="b" id="b5" onclick="c('5')"><p>5</p></div>
+        <div class="b" id="b6" onclick="c('6')"><p>6</p></div>
+        <div class="b" id="bm" onclick="o('*')"><p>x</p></div>
+        <div class="b" id="b1" onclick="c('1')"><p>1</p></div>
+        <div class="b" id="b2" onclick="c('2')"><p>2</p></div>
+        <div class="b" id="b3" onclick="c('3')"><p>3</p></div>
+        <div class="b" id="bs" onclick="o('-')"><p>-</p></div>
+        <div class="b" id="bp" onclick="p('.')"><p>.</p></div>
+        <div class="b" id="b0" onclick="c('0')"><p>0</p></div>
+        <div class="b" id="bc" onclick="r('r')"><p>c</p></div>
+        <div class="b" id="ba" onclick="o('+')"><p>+</p></div>
+    </div>
+
+    <script>
+
+        a   = ''
+        b   = ''
+        op  = ''
+        num = 1
+
+        function c(e){
+
+            $('.q').append(e)
+
+            if(num == 1){ a += e }
+            if(num == 2){ b += e }
+
+            if (op == '+') {
+                $('.a').text('=' + (Number(a) + Number(b))) 
+            }
+            if (op == '-') {
+                $('.a').text('=' + (Number(a) - Number(b))) 
+            }
+            if (op == '*') {
+                $('.a').text('=' + (Number(a) * Number(b))) 
+            }
+            if (op == '/') {
+                $('.a').text('=' + (Number(a) / Number(b))) 
+            }
+          
+            console.log(a)
+            console.log(b)
+            console.log(num)
+        }
+
+        function o(e){
+
+            if (e == '+') { op = '+' }
+            if (e == '-') { op = '-' }
+            if (e == '*') { op = '*' }
+            if (e == '/') { op = '/' }
+
+            $('.q').append(op)
+
+            num = 2
+        }
+
+        function r(){
+            location.reload()
+        }
+
+    </script>
+
+</body></html>
